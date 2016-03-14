@@ -1,31 +1,18 @@
-\input{lib/lib.tex}
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
 \usepackage{pdfpages}
 \usepackage{palatino}
 \usepackage{enumitem}
+\usepackage{outlines} %support nested list
 
-\usepackage[bottom]{footmisc}
 \usepackage{desclist}
-\usepackage{tocloft}
-\setlength\cftparskip{4pt}
 
 \setlist[itemize]{topsep=3pt,after=\vspace{.5\baselineskip}}
 \usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
 \setlength{\parskip}{2mm}
-
-\definecolor{mygreen}{rgb}{0,0.6,0}
-\definecolor{mygray}{rgb}{0.5,0.5,0.5}
-\definecolor{mymauve}{rgb}{0.58,0,0.82}
-
-\newcommand{\stcomp}[1]{\overline{#1}} 
-\newcommand{\N}{\mathbb{N}}
-
-% Make the style indentedefinition use bold for the name of the theorem
-\makeatletter
-\def\th@indenteddefinition{%
-  \thm@notefont{}% same as heading font
-  \normalfont % body font
-}
-\makeatother
 
 
 \def\blurb{\textsc{Université catholique de Louvain\\
@@ -69,6 +56,161 @@
 \end{titlepage}
 
 %\tableofcontents
+
+
+\subsection*{The provided requirements may have omissions, ambiguities and contradictions. In these situations, propose a sensible correction or improvement of the corresponding requirements. Keep a record of the identified requirement issues and adopted corrections}
+\begin{itemize}
+	\item Gas pump can either send a message when the transaction is over with the number of gallons purchased (from requirement 1) or it can send 2 messages: one when the transaction is over with no parameters and one to indicates the amount of gas and the amount of dollars for the transaction.
+We chose the second option because the system might want to know the current amount of gas and dollar during the transaction and not only at the end. This is possible with the 2 separates messages.
+	\item In the requirements, the local businesses have billing accounts set up to receive a monthly bill, instead of paying at the time of purchase. And customers can pay directly or have a billing accounts. 
+We think, there is a omissions the local businesses can also pay directly and don't need systematically a billing account.
+	\item The term Gas Station Control System (GSCS) can be ambiguous. It is used a lot of times in the requirements, and some times it refers to a kind of interface. For us, the term GSCS refers to the whole system.
+\end{itemize}
+
+
+\subsection*{Identify all interfaces of the system to the environment and the external entities connecting through those interfaces. For each interface, list the different interactions, types and ranges of data exchanged}
+
+\emph{Note: IN = message received by our GSCS system from the entity; OUT = message send by our GSCS to the entity.}
+
+\begin{outline}
+	\1 Customers : external entity
+	\1 Cashier : external entity
+	\1 Cashier's interface 
+		\2[IN] :
+			\3 cashier\_input(input): the cashier has input the given input (for example that the payment is completed or that the payment will be made by monthly bill). \\
+				\textit{input} : numeric, option, ...
+		\2[OUT]	:	
+			\3 message(string): message to be display at the cashier’s interface. \\
+				\textit{string} : unknow format (for example ask the cashier for the billing account number).
+	\1 Credit card reader
+		\2[IN] :
+			\3 card\_ readed(credit\_ card\_ number): a card has been read with the given credit card number. \\
+				\textit{credit\_ card\_ number} : a valid credit card number.
+			\3 invalid\_ card\_ read() : an invalid card has been read.
+	\1 Credit card system 
+		\2[OUT]	:	
+			\3 do\_ purchase(credit\_ card\_ number, amount) : ask the credit card system to proceed the payment with the given credit card number for the given amount. \\
+				\textit{credit\_ card\_ number} : a valid credit card number. \\
+				\textit{amount} : a positive real number between 0 and 10000.
+	\1 Gas pump
+		\2[IN] :
+			\3 customer\_ has\_ finished\_ dispensing\_ gas(): inform the GS CS that the customer has finished dispensing gas.
+			\3 current\_ values(amount\_ of\_ gas, dollar\_ amount): give information about the current amount of gas and the current amount of dollars taken by the customer. \\
+				\textit{amount\_ of\_ gas} : real positive number. \\
+				\textit{dollar\_ amount} : a positive real number between 0 and 999,99.
+	\1 Gas pump interface 
+		\2[IN] :
+			\3 option\_choice(option): the user has selected the option \textit{option} (for example the chosen payment method). \\
+				\textit{option} : unknow format.
+		\2[OUT]	:	
+			\3 message(string): message to be displayed to the customer (for example choose a payment method). \\
+				\textit{string} : unknow format.
+\end{outline}
+
+
+
+\subsection*{Identify all parts of the state of the system (inventory, accounts, ... ) and the types and ranges of data contained.}
+
+\begin{outline}
+	\1 Payment type: the customer can choose to pay directly or with a monthly bill. This is represented in this state value.
+		\2 Data type : Enumeration
+		\2 Data range: DirectPayment, MonthlyBill
+	\1 Payment method: this state value records the payment method that the user has chosen.
+		\2 Data type : Enumeration
+		\2 Data range: it can be either Cash, CreditCard.
+	\1 Gallons of fuel: The number of gallons of fuel that the current customer has already took from the pump.
+		\2 Data type : Real number
+		\2 Data range: [0, x] where x is the max capacity of the tank
+	\1 Dollar amount: The amount that the customer has to pay 
+		\2 Data type : Real number
+		\2 Data range:  [0, 999.99]
+	\1 Credit card number: if the customer has chosen to pay with credit card, the credit card number will be stored in this variable.
+		\2 Data type : Credit card number
+		\2 Data range: --
+	\1 Payment status: this variable will state if the customer has done the payment or not.
+		\2 Data type : boolean
+		\2 Data range: [True, False]
+	\1 Billing account number: the account number to which the bill must be send at the end of the month.
+		\2 Data type : Account number
+		\2 Data range: --
+\end{outline}
+
+\subsection*{Provide a data-flow diagram for the system. Describe succinctly the meaning and role of each process, actor and store.}
+The data-flow diagram is drawed in Figure \ref{fig:dataflow} on page \pageref{fig:dataflow}.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{../data-flow-diagram.png} 
+ \caption{Data-flow diagram}
+ \label{fig:dataflow}
+\end{figure}
+
+
+\subsection*{Provide a class diagram for the system. Distinguish classes representing entities outside the scope of the system.}
+
+The class diagram is drawed in Figure \ref{fig:class} on page \pageref{fig:class}.
+
+
+\subsection*{Provide sequence diagrams for the following scenarios:}
+\begin{enumerate}
+	\item A customer successfully purchases gas and charges it on a monthly bil: drawed in Figure \ref{fig:sequence1} on page \pageref{fig:sequence1}.
+	\item A customer purchases gas and attempts to pay by credit card but his card is refused. He then pays by cash to the cashier: drawed in Figure \ref{fig:sequence2} on page \pageref{fig:sequence2}.
+	\item The cashier successfully processes a monthly payment by credit card: drawed in Figure \ref{fig:sequence3} on page \pageref{fig:sequence3}.
+\end{enumerate}
+	
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{../sequence1.png} 
+ \caption{A customer successfully purchases gas and charges it on a monthly bil.}
+ \label{fig:sequence1}
+\end{figure}
+
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{../sequence2.png} 
+ \caption{A customer purchases gas and attempts to pay by credit card but his card is refused. He then pays by cash to the cashier.}
+ \label{fig:sequence2}
+\end{figure}
+
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{../sequence3.png} 
+ \caption{The cashier successfully processes a monthly payment by credit card.}
+ \label{fig:sequence3}
+\end{figure}
+
+
+\subsection*{Provide state diagrams for the behaviour of the gas pump interface and cashier’s interface. They should be consistent with the sequence diagrams above.}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
