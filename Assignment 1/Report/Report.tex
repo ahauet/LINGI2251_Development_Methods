@@ -7,6 +7,8 @@
 \usepackage{palatino}
 \usepackage{enumitem}
 \usepackage{outlines} %support nested list
+\usepackage{float}
+\usepackage{framed}
 
 \usepackage{desclist}
 
@@ -58,7 +60,7 @@
 %\tableofcontents
 
 
-\subsection*{The provided requirements may have omissions, ambiguities and contradictions. In these situations, propose a sensible correction or improvement of the corresponding requirements. Keep a record of the identified requirement issues and adopted corrections}
+\section{Requirements adjustment}
 \begin{itemize}
 	\item Gas pump can either send a message when the transaction is over with the number of gallons purchased (from requirement 1) or it can send 2 messages: one when the transaction is over with no parameters and one to indicates the amount of gas and the amount of dollars for the transaction.
 We chose the second option because the system might want to know the current amount of gas and dollar during the transaction and not only at the end. This is possible with the 2 separates messages.
@@ -68,48 +70,81 @@ We think, there is a omissions the local businesses can also pay directly and do
 \end{itemize}
 
 
-\subsection*{Identify all interfaces of the system to the environment and the external entities connecting through those interfaces. For each interface, list the different interactions, types and ranges of data exchanged}
+\section{Interfaces}
 
-\emph{Note: IN = message received by our GSCS system from the entity; OUT = message send by our GSCS to the entity.}
-
-\begin{outline}
-	\1 Customers : external entity
-	\1 Cashier : external entity
-	\1 Cashier's interface 
-		\2[IN] :
-			\3 cashier\_input(input): the cashier has input the given input (for example that the payment is completed or that the payment will be made by monthly bill). \\
-				\textit{input} : numeric, option, ...
-		\2[OUT]	:	
-			\3 message(string): message to be display at the cashier’s interface. \\
-				\textit{string} : unknow format (for example ask the cashier for the billing account number).
-	\1 Credit card reader
-		\2[IN] :
-			\3 card\_ readed(credit\_ card\_ number): a card has been read with the given credit card number. \\
-				\textit{credit\_ card\_ number} : a valid credit card number.
-			\3 invalid\_ card\_ read() : an invalid card has been read.
-	\1 Credit card system 
-		\2[OUT]	:	
-			\3 do\_ purchase(credit\_ card\_ number, amount) : ask the credit card system to proceed the payment with the given credit card number for the given amount. \\
-				\textit{credit\_ card\_ number} : a valid credit card number. \\
-				\textit{amount} : a positive real number between 0 and 10000.
-	\1 Gas pump
-		\2[IN] :
-			\3 customer\_ has\_ finished\_ dispensing\_ gas(): inform the GS CS that the customer has finished dispensing gas.
-			\3 current\_ values(amount\_ of\_ gas, dollar\_ amount): give information about the current amount of gas and the current amount of dollars taken by the customer. \\
-				\textit{amount\_ of\_ gas} : real positive number. \\
-				\textit{dollar\_ amount} : a positive real number between 0 and 999,99.
-	\1 Gas pump interface 
-		\2[IN] :
-			\3 option\_choice(option): the user has selected the option \textit{option} (for example the chosen payment method). \\
-				\textit{option} : unknow format.
-		\2[OUT]	:	
-			\3 message(string): message to be displayed to the customer (for example choose a payment method). \\
-				\textit{string} : unknow format.
-\end{outline}
+\paragraph{Note:}  
+\begin{itemize}
+\item IN = message received by our GSCS system from the entity
+\item OUT = message send by our GSCS to the entity
+\end{itemize}
 
 
+\subsection{Customers (external entity)}
+\subsection{Cashier (external entity)}
+\subsection{Cashier's interface}
+\begin{itemize}
+\item IN : 
+	\begin{itemize}
+		\item cashier\_input (input): the cashier has input the given input (for example that the payment is completed or that the payment will be made by monthly bill). \\
+		\textbf{input} : numeric, option, ...
+	\end{itemize}
+\item OUT :
+	\begin{itemize}
+		\item message(string): message to be display at the cashier’s interface. \\
+		\textbf{string} : unknow format (for example ask the cashier for the billing account number).
+	\end{itemize}
+\end{itemize}
 
-\subsection*{Identify all parts of the state of the system (inventory, accounts, ... ) and the types and ranges of data contained.}
+
+\subsection{Credit card reader}
+\begin{itemize}
+\item IN : 
+	\begin{itemize}
+		\item card\_ readed(credit\_ card\_ number): a card has been read with the given credit card number. \\
+		\textbf{credit\_ card\_ number} : a valid credit card number.
+		\item invalid\_ card\_ read() : an invalid card has been read.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Credit card system}
+\begin{itemize}
+\item OUT : 
+	\begin{itemize}
+		\item  do\_ purchase(credit\_ card\_ number, amount) : ask the credit card system to proceed the payment with the given credit card number for the given amount. \\
+		\textbf{credit\_ card\_ number} : a valid credit card number. \\
+		\textbf{amount} : a positive real number between 0 and 10000.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Gas pump}
+\begin{itemize}
+\item IN : 
+	\begin{itemize}
+		\item  customer\_ has\_ finished\_ dispensing\_ gas(): inform the GS CS that the customer has finished dispensing gas.
+		\item  current\_ values(amount\_ of\_ gas, dollar\_ amount): give information about the current amount of gas and the current amount of dollars taken by the customer. \\
+		\textbf{amount\_ of\_ gas} : real positive number. \\
+		\textbf{dollar\_ amount} : a positive real number between 0 and 999,99.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Gas pump interface }
+\begin{itemize}
+\item IN : 
+	\begin{itemize}
+		\item  option\_choice(option): the user has selected the option \textit{option} (for example the chosen payment method). \\
+		\textbf{option} : unknow format.
+	\end{itemize}
+\item OUT : 
+	\begin{itemize}
+		\item  message(string): message to be displayed to the customer (for example choose a payment method). \\
+		\textbf{string} : unknow format.
+	\end{itemize}
+\end{itemize}
+
+
+
+
+\section{State of the system}
 
 \begin{outline}
 	\1 Payment type: the customer can choose to pay directly or with a monthly bill. This is represented in this state value.
@@ -135,8 +170,8 @@ We think, there is a omissions the local businesses can also pay directly and do
 		\2 Data range: --
 \end{outline}
 
-\subsection*{Provide a data-flow diagram for the system. Describe succinctly the meaning and role of each process, actor and store.}
-The data-flow diagram is drawed in Figure \ref{fig:dataflow} on page \pageref{fig:dataflow}.
+\section{Data-flow diagram}
+%The data-flow diagram is drawed in Figure \ref{fig:dataflow} on page \pageref{fig:dataflow}.
 
 \begin{figure}[H]
  \centering
@@ -146,12 +181,12 @@ The data-flow diagram is drawed in Figure \ref{fig:dataflow} on page \pageref{fi
 \end{figure}
 
 
-\subsection*{Provide a class diagram for the system. Distinguish classes representing entities outside the scope of the system.}
+\section{Class diagram for the system}
 
-The class diagram is drawed in Figure \ref{fig:class} on page \pageref{fig:class}.
+%The class diagram is drawed in Figure \ref{fig:class} on page \pageref{fig:class}.
 
 
-\subsection*{Provide sequence diagrams for the following scenarios:}
+\subsection*{Sequence diagrams for the following scenarios:}
 \begin{enumerate}
 	\item A customer successfully purchases gas and charges it on a monthly bil: drawed in Figure \ref{fig:sequence1} on page \pageref{fig:sequence1}.
 	\item A customer purchases gas and attempts to pay by credit card but his card is refused. He then pays by cash to the cashier: drawed in Figure \ref{fig:sequence2} on page \pageref{fig:sequence2}.
@@ -180,7 +215,7 @@ The class diagram is drawed in Figure \ref{fig:class} on page \pageref{fig:class
 \end{figure}
 
 
-\subsection*{Provide state diagrams for the behaviour of the gas pump interface and cashier’s interface. They should be consistent with the sequence diagrams above.}
+\section{State diagrams}
 
 
 \begin{enumerate}
