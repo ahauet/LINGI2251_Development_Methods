@@ -67,6 +67,7 @@ We chose the second option because the system might want to know the current amo
 	\item In the requirements, the local businesses have billing accounts set up to receive a monthly bill, instead of paying at the time of purchase. And customers can pay directly or have a billing accounts. 
 We think, there is a omissions the local businesses can also pay directly and don't need systematically a billing account.
 	\item The term Gas Station Control System (GSCS) can be ambiguous. It is used a lot of times in the requirements, and some times it refers to a kind of interface. For us, the term GSCS refers to the whole system.
+	\item There are no information about how the billing accounts are created. So we suppose that the billing accounts are created by the cashier using the cashier's interface.
 \end{itemize}
 
 
@@ -92,7 +93,7 @@ This entity is connected to Cashier's interface.
 	\end{itemize}
 \item OUT :
 	\begin{itemize}
-		\item message(string): message to be display at the cashier’s interface. \\
+		\item display\_message(string): message to be display at the cashier. \\
 		\textbf{string} : unknow format (for example ask the cashier for the billing account number).
 	\end{itemize}
 \end{itemize}
@@ -182,10 +183,21 @@ This entity is connected to Cashier's interface.
  \label{fig:dataflow}
 \end{figure}
 
+\newpage
 
 \section{Class diagram for the system}
 
 %The class diagram is drawed in Figure \ref{fig:class} on page \pageref{fig:class}.
+
+Yellow boxes represent entities outside the scope of the system.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{../class.png} 
+ \caption{Class diagram of the system}
+ \label{fig:class}
+\end{figure}
+
 
 
 \subsection*{Sequence diagrams for the following scenarios:}
