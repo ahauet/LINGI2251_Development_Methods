@@ -111,14 +111,16 @@
 Our system is composed of three parts. The first is the station controller which control all the station. The second is the Gas Pump which is about the logistic of the pump. And finally, the Management part which allow to customers to pay or to manage the billing.
 
 \subsubsection*{Station controller}
-\begin{itemize}
-\item{Gaz pump UI}
-\item{Gaz pump controller}
-\item{Fuel stock controller}
-\item{Fuel}
-\item{Gaz pump}
-\end{itemize}
+
 \subsubsection*{Gas Pump}
+\begin{itemize}
+\item{Gaz pump UI :} Interface with which the user interacts.
+\item{Gaz pump controller :} Control the different interaction between the system (Station controler) and the different elements of the Gas pumps.
+\item{Fuel stock controller :} Manage the stock of fuel of the station
+\item{Fuel :} Represent a specific type of fuel
+\item{Gaz pump :} Deliver the gaz to the costumers and compute the accounting. 
+\end{itemize}
+\subsubsection*{Management}
 \begin{itemize}
 \item{Cashier UI}
 \item{Cashier controller}
@@ -133,8 +135,6 @@ Our system is composed of three parts. The first is the station controller which
 \item{Account purchase}
 \item{Cash purchase}
 \end{itemize}
-\subsubsection*{Management}
-
 
 \input{detailed_design}
 
