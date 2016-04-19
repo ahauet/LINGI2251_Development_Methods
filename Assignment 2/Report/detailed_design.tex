@@ -1,9 +1,47 @@
 \section{Detailed Design}
-\subsection{Class diagram}
+\subsection{Our design}
+\subsubsection{Class diagram}
 
 \begin{figure}[H]
  \centering
- \includegraphics[width=\textwidth]{../ClassDiagram.png} 
- \caption{Class diagram}
- \label{fig:dep}
+ \includegraphics[width=\textwidth]{../ClassDiagram.png}
 \end{figure}
+
+\subsubsection{Description of classes}
+
+
+
+\subsubsection{Uses diagram}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{../useDiagram.png}
+\end{figure}
+There are 2 loops in this Uses diagram:
+\begin{itemize}
+	\item between \textit{Gas pump UI} and \textit{Gas pump controller}
+	\item between \textit{Cashier UI} and \textit{Cashier controller}
+\end{itemize}
+But this is not really a problem because there are just between a view and its controller. It makes senses that the controller uses the view to update it and that the view uses the controller to notify it when an user's action occurs. We think that they can no be eliminated.
+
+
+\subsection{Design Patterns}
+The skeletons are written in Java.
+
+\subsubsection{Template Method}
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.8\textwidth]{../templateMethod.png}
+\end{figure}
+
+\lstinputlisting[language=java, inputencoding=utf8]{../templateMethod.java}
+
+\subsubsection{Strategy Pattern}
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.8\textwidth]{../strategyPattern.png}
+\end{figure}
+
+\lstinputlisting[language=java, inputencoding=utf8]{../strategyPattern.java}
+
+
