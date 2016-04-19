@@ -59,5 +59,43 @@
 
 %\tableofcontents
 
+\section{Architectural Design}
+\subsection{Hierarchical decomposition}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{../DecompositionView.png} 
+ \caption{Hierarchical decomposition}
+ \label{fig:dep}
+\end{figure}
+
+\subsection{Roles and interactions of all components}
+
+Our system is composed of three parts. The first is the station controller which control all the station. The second is the Gas Pump which is about the logistic of the pump. And finally, the Management part which allow to customers to pay or to manage the billing.
+
+\subsubsection*{Station controller}
+\begin{itemize}
+\item{Gaz pump UI}
+\item{Gaz pump controller}
+\item{Fuel stock controller}
+\item{Fuel}
+\item{Gaz pump}
+\end{itemize}
+\subsubsection*{Gas Pump}
+\begin{itemize}
+\item{Cashier UI}
+\item{Cashier controller}
+\item{Credit card controller}
+\item{Billing storage controller}
+\item{Payement controller}
+\item{Customer}
+\item{Account}
+\item{Credit transaction}
+\item{Credit payment}
+\item{Credit purchase}
+\item{Account purchase}
+\item{Cash purchase}
+\end{itemize}
+\subsubsection*{Management}
 
 \end{document}
