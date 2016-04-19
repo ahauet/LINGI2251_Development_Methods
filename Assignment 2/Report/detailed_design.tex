@@ -31,7 +31,7 @@ The skeletons are written in Java.
 \subsubsection{Template Method}
 \begin{figure}[H]
  \centering
- \includegraphics[width=0.8\textwidth]{../templateMethod.png}
+ \includegraphics[width=0.75\textwidth]{../templateMethod.png}
 \end{figure}
 
 \lstinputlisting[language=java, inputencoding=utf8]{../templateMethod.java}
@@ -45,3 +45,31 @@ The skeletons are written in Java.
 \lstinputlisting[language=java, inputencoding=utf8]{../strategyPattern.java}
 
 
+\subsubsection{Decorator Pattern}
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.35\textwidth]{../decoratorPattern.png}
+\end{figure}
+
+\lstinputlisting[language=java, inputencoding=utf8]{../decoratorPattern.java}
+
+
+\subsubsection{Observer Pattern}
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.9\textwidth]{../observatorPattern.png}
+\end{figure}
+
+\lstinputlisting[language=java, inputencoding=utf8]{../observatorPattern.java}
+
+
+\subsubsection{Composite Pattern}
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.8\textwidth]{../compositePattern.png}
+\end{figure}
+
+\lstinputlisting[language=java, inputencoding=utf8]{../compositePattern.java}
+
+We can see in the snippet of code above where the new methods are implemented.
+But the existing methods (the getters and setters for the bank account in this case) are implemented in the SingleAccount class. If we had other pre-existing methods in the Account, they would be implemented in the new SingleAccount class and also in the CompanyAccount. To call those methods, the developer should have a reference to the concrete object, not the new Account interface (because it does not define other methods than \textit{getRemainingBalance()}.
