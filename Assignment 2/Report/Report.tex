@@ -109,9 +109,19 @@
 
 \subsection{Roles and interactions of all components}
 
-Our system is composed of three parts. The first is the station controller which control all the station. The second is the Gas Pump which is about the logistic of the pump. And finally, the Management part which allow to customers to pay or to manage the billing.
+Our system is composed of three parts. The first is the station controller which control all the station. The second is the Gas Pump which is about the logistic of the pump. And finally, the Management part which allow to customers to pay or to manage the billing.\\
+
+
+We use also  a model-view-controller in our design. We distinct the application into three parts :
+\begin{enumerate}
+\item{Model :} Manipulation of data
+\item{View :} Interaction with the users
+\item{Controller :} Management of the different events in the program
+\end{enumerate}
 
 \subsubsection*{Station controller}
+The Station controller represent the global controller of all the gaz station.
+
 
 \subsubsection*{Gas Pump}
 \begin{itemize}
@@ -130,11 +140,11 @@ Our system is composed of three parts. The first is the station controller which
 \item{Payment controller :} Handle the customer to pay.
 \item{Customer :} Represent a customer with the different fields needed
 \item{Account :} Compute the account of a purchase
-\item{Credit transaction :}
-\item{Credit payment :}
-\item{Credit purchase :}
-\item{Account purchase :}
-\item{Cash purchase :}
+\item{Credit transaction :} Represent a transaction with a credit card. 
+\item{Credit payment :} Allow to pay with the credit card
+\item{Credit purchase :} Add the purchase to the credit account.
+\item{Account purchase :} Payment of the balance of the account 
+\item{Cash purchase :} Management of the purchase with cash
 \end{itemize}
 
 \input{detailed_design}
