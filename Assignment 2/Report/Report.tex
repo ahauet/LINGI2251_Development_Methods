@@ -124,6 +124,7 @@ The Station controller represent the global controller of all the gaz station.
 
 
 \subsubsection*{Gas Pump}
+The Gas pump represent the controller of a gas pump.
 \begin{itemize}
 \item{Gaz pump UI :} Interface with which the user interacts.
 \item{Gaz pump controller :} Control the different interaction between the system (Station controller) and the different elements of the Gas pumps.
@@ -132,12 +133,13 @@ The Station controller represent the global controller of all the gaz station.
 \item{Gaz pump :} Deliver the gaz to the costumers and compute the accounting. 
 \end{itemize}
 \subsubsection*{Management}
+The Management represent the management part of the application in which the payment for exemple while be manage.
 \begin{itemize}
-\item{Cashier UI :} Interface with which the user interacts.
+\item{Cashier UI :} Interface with which the cashier interacts.
 \item{Cashier controller :} Allow the interaction between the cashier system and the global system (Station controller).
 \item{Credit card controller :} Manage the interaction between the external credit card system and our system.
 \item{Billing storage controller :} Manage the billing accounts.
-\item{Payment controller :} Handle the customer to pay.
+\item{Payment controller :} Allow the customer to make a payment.
 \item{Customer :} Represent a customer with the different fields needed
 \item{Account :} Compute the account of a purchase
 \item{Credit transaction :} Represent a transaction with a credit card. 
