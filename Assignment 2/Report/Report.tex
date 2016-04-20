@@ -116,25 +116,25 @@ Our system is composed of three parts. The first is the station controller which
 \subsubsection*{Gas Pump}
 \begin{itemize}
 \item{Gaz pump UI :} Interface with which the user interacts.
-\item{Gaz pump controller :} Control the different interaction between the system (Station controler) and the different elements of the Gas pumps.
-\item{Fuel stock controller :} Manage the stock of fuel of the station
-\item{Fuel :} Represent a specific type of fuel
+\item{Gaz pump controller :} Control the different interaction between the system (Station controller) and the different elements of the Gas pumps.
+\item{Fuel stock controller :} Manage the stock of fuel of the station.
+\item{Fuel :} Represent a specific type of fuel.
 \item{Gaz pump :} Deliver the gaz to the costumers and compute the accounting. 
 \end{itemize}
 \subsubsection*{Management}
 \begin{itemize}
-\item{Cashier UI}
-\item{Cashier controller}
-\item{Credit card controller}
-\item{Billing storage controller}
-\item{Payement controller}
-\item{Customer}
-\item{Account}
-\item{Credit transaction}
-\item{Credit payment}
-\item{Credit purchase}
-\item{Account purchase}
-\item{Cash purchase}
+\item{Cashier UI :} Interface with which the user interacts.
+\item{Cashier controller :} Allow the interaction between the cashier system and the global system (Station controller).
+\item{Credit card controller :} Manage the interaction between the external credit card system and our system.
+\item{Billing storage controller :} Manage the billing accounts.
+\item{Payment controller :} Handle the customer to pay.
+\item{Customer :} Represent a customer with the different fields needed
+\item{Account :} Compute the account of a purchase
+\item{Credit transaction :}
+\item{Credit payment :}
+\item{Credit purchase :}
+\item{Account purchase :}
+\item{Cash purchase :}
 \end{itemize}
 
 \input{detailed_design}
