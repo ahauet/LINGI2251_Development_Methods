@@ -109,7 +109,7 @@
 
 \subsection{Roles and interactions of all components}
 
-Our system is composed of three parts. The first is the station controller which control all the station. The second is the Gas Pump which is about the logistic of the pump. And finally, the Management part which allow to customers to pay or to manage the billing.\\
+Our system is composed of three parts. The first is the station controller which controls all the station. The second is the Gas Pump which is about the logistic of the pump. And finally, the Management part which allows to customers to pay or to manage the billing.\\
 
 
 We use also  a model-view-controller in our design. We distinct the application into three parts :
@@ -120,33 +120,33 @@ We use also  a model-view-controller in our design. We distinct the application 
 \end{enumerate}
 
 \subsubsection*{Station controller}
-The Station controller represent the global controller of all the gaz station.
+The Station controller represents the global controller of all the gaz station.
 
 
 \subsubsection*{Gas Pump}
-The Gas pump represent the controller of a gas pump.
+The Gas pump represents the controller of a gas pump.
 \begin{itemize}
 \item{Gaz pump UI :} Interface with which the user interacts.
-\item{Gaz pump controller :} Control the different interaction between the system (Station controller) and the different elements of the Gas pumps.
-\item{Fuel stock controller :} Manage the stock of fuel of the station.
-\item{Fuel :} Represent a specific type of fuel.
-\item{Gaz pump :} Deliver the gaz to the costumers and compute the accounting. 
+\item{Gaz pump controller :} Controls the different interaction between the system (Station controller) and the different elements of the Gas pumps.
+\item{Fuel stock controller :} Manages the stock of fuel of the station.
+\item{Fuel :} Represents a specific type of fuel.
+\item{Gaz pump :} Delivers the gaz to the costumers and compute the accounting. 
 \end{itemize}
 \subsubsection*{Management}
-The Management represent the management part of the application in which the payment for exemple while be manage.
+The Management represents the management part of the application in which the payment for example while be manage.
 \begin{itemize}
 \item{Cashier UI :} Interface with which the cashier interacts.
-\item{Cashier controller :} Allow the interaction between the cashier system and the global system (Station controller).
-\item{Credit card controller :} Manage the interaction between the external credit card system and our system.
-\item{Billing storage controller :} Manage the billing accounts.
-\item{Payment controller :} Allow the customer to make a payment.
-\item{Customer :} Represent a customer with the different fields needed
-\item{Account :} Compute the account of a purchase
-\item{Credit transaction :} Represent a transaction with a credit card. 
-\item{Credit payment :} Allow to pay with the credit card
-\item{Credit purchase :} Add the purchase to the credit account.
-\item{Account purchase :} Payment of the balance of the account 
-\item{Cash purchase :} Management of the purchase with cash
+\item{Cashier controller :} Allows the interaction between the cashier system and the global system (Station controller).
+\item{Credit card controller :} Manages the interaction between the external credit card system and our system.
+\item{Billing storage controller :} Manages the billing accounts.
+\item{Payment controller :} Allows the customer to make a payment.
+\item{Customer :} Represents a customer with the different fields needed
+\item{Account :} Computes the account of a purchase
+\item{Credit transaction :} Represents a transaction with a credit card. 
+\item{Credit payment :} Allows to pay with the credit card
+\item{Credit purchase :} Adds the purchase to the credit account.
+\item{Account purchase :} Payments of the balance of the account 
+\item{Cash purchase :} Managements of the purchase with cash
 \end{itemize}
 
 \input{detailed_design}
