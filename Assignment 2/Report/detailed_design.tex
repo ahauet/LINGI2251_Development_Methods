@@ -13,7 +13,7 @@
 The station controller is the main controller of the application. It has a list of Gas pump controller and a Cashier controller. 
 
 \paragraph{Cashier controller}
-It is responsible for managing all the interaction with the cashier. That's why it has a Cahsier UI. It also has a Billing storage controller to be able to retrieve accounts and add bills when the user when to pay by monthly bill.
+It is responsible for managing all the interaction with the cashier. That's why it has a Cashier UI. It also has a Billing storage controller to be able to retrieve accounts and add bills when the user when to pay by monthly bill.
 
 \paragraph{Cashier UI}
 This class is the graphical interface presented to the cashier that allows him to input some payments or bills and display information.
@@ -34,8 +34,8 @@ It has a list of references to some purchases that were made at that specific ga
 This class is the graphical interface presented to the customer and is responsible for the interactions with the customer. It can display information and accept inputs that it will transmit the its controller.
 
 \paragraph{Fuel stock}
-This class reprensents the current stock available in the tank (amount attribute) of the station for a specific type of fuel. That's why it has a reference to Fuel.
-Its only method is updateStock that receive a volume of fuel consummed or added to the stock and update the inventory database.
+This class represents the current stock available in the tank (amount attribute) of the station for a specific type of fuel. That's why it has a reference to Fuel.
+Its only method is updateStock that receive a volume of fuel consumed or added to the stock and update the inventory database.
 
 \paragraph{Fuel}
 This class is a model representing a type of fuel with its price and label.
@@ -45,7 +45,7 @@ It is an abstract class representing a purchase made by a customer to a specific
 
 \paragraph{Cash purchase, Account purchase and Credit purchase}
 Those three classes all extend the abstract class Purchase.
-The cash purchase just reprensent a simple cahs transaction, with no special attribute.
+The cash purchase just represents a simple cash transaction, with no special attribute.
 The account purchase is linked to an account and represent a purchase paid by monthly bill. 
 A credit purchase is linked to a credit transaction and represent a purchase paid by credit card.
 
@@ -94,7 +94,8 @@ The skeletons are written in Java.
  \includegraphics[width=0.75\textwidth]{../templateMethod.png}
 \end{figure}
 
-\lstinputlisting[language=java, inputencoding=utf8]{../templateMethod.java}
+\lstinputlisting[language=java, inputencoding=utf8]{templateMethod.java}
+
 
 \subsubsection{Strategy Pattern}
 \begin{figure}[H]
@@ -102,7 +103,7 @@ The skeletons are written in Java.
  \includegraphics[width=0.8\textwidth]{../strategyPattern.png}
 \end{figure}
 
-\lstinputlisting[language=java, inputencoding=utf8]{../strategyPattern.java}
+\lstinputlisting[language=java, inputencoding=utf8]{strategyPattern.java}
 
 
 \subsubsection{Decorator Pattern}
@@ -111,7 +112,7 @@ The skeletons are written in Java.
  \includegraphics[width=0.35\textwidth]{../decoratorPattern.png}
 \end{figure}
 
-\lstinputlisting[language=java, inputencoding=utf8]{../decoratorPattern.java}
+\lstinputlisting[language=java, inputencoding=utf8]{decoratorPattern.java}
 
 
 \subsubsection{Observer Pattern}
@@ -120,7 +121,7 @@ The skeletons are written in Java.
  \includegraphics[width=0.9\textwidth]{../observatorPattern.png}
 \end{figure}
 
-\lstinputlisting[language=java, inputencoding=utf8]{../observatorPattern.java}
+\lstinputlisting[language=java, inputencoding=utf8]{observatorPattern.java}
 
 
 \subsubsection{Composite Pattern}
@@ -129,7 +130,7 @@ The skeletons are written in Java.
  \includegraphics[width=0.8\textwidth]{../compositePattern.png}
 \end{figure}
 
-\lstinputlisting[language=java, inputencoding=utf8]{../compositePattern.java}
+\lstinputlisting[language=java, inputencoding=utf8]{compositePattern.java}
 
 We can see in the snippet of code above where the new methods are implemented.
 But the existing methods (the getters and setters for the bank account in this case) are implemented in the SingleAccount class. If we had other pre-existing methods in the Account, they would be implemented in the new SingleAccount class and also in the CompanyAccount. To call those methods, the developer should have a reference to the concrete object, not the new Account interface (because it does not define other methods than \textit{getRemainingBalance()}.
