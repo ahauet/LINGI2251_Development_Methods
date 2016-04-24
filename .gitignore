@@ -160,3 +160,5 @@ TSWLatexianTemp*
 
 # DS_Store
 .DS_Store
+
+*.ldb

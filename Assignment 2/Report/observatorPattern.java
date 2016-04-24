@@ -2,7 +2,7 @@ public interface Observer {
   public void notify(Observable obs);
 }
 
-public class FuelStock implements Observer {
+public class FuelStockController implements Observer {
   // ...
   public void notify(Observable obs){
     GasPumpController ctrl = (GasPumpController) obs;

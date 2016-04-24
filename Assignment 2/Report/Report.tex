@@ -109,31 +109,31 @@
 
 \subsection{Roles and interactions of all components}
 
-Our system is composed of three parts. The first is the station controller which controls all the station. The second is the Gas Pump which is about the logistic of the pump. And finally, the Management part which allows to customers to pay or to manage the billing.\\
+Our system is composed of three parts. The first is the Station controller which controls all the station. The second is the Gas Pump which is about the logistic of the pump. And finally, the Management part which allows to customers to pay or to manage the billing.\\
 
 
-We use also  a model-view-controller in our design. We distinct the application into three parts :
+We use also a model-view-controller pattern in our design. We distinct the application into three parts :
 \begin{enumerate}
-\item{Model :} Manipulation of data
+\item{Model :} Representation of the world
 \item{View :} Interaction with the users
 \item{Controller :} Management of the different events in the program
 \end{enumerate}
 
 \subsubsection*{Station controller}
-The Station controller represents the global controller of all the gaz station.
+The Station controller represents the global controller of all the gas station.
 
 
 \subsubsection*{Gas Pump}
 The Gas pump represents the controller of a gas pump.
 \begin{itemize}
-\item{Gaz pump UI :} Interface with which the user interacts.
-\item{Gaz pump controller :} Controls the different interaction between the system (Station controller) and the different elements of the Gas pumps.
+\item{Gas pump UI :} Interface with which the user interacts.
+\item{Gas pump controller :} Controls the different interaction between the system (Station controller) and the different elements of a Gas pump.
 \item{Fuel stock controller :} Manages the stock of fuel of the station.
 \item{Fuel :} Represents a specific type of fuel.
-\item{Gaz pump :} Delivers the gaz to the costumers and compute the accounting. 
+\item{Gas pump :} Delivers the gas to the costumers and compute the accounting. 
 \end{itemize}
 \subsubsection*{Management}
-The Management represents the management part of the application in which the payment for example while be manage.
+The Management represents the management part of the application in which the payment for example will be managed.
 \begin{itemize}
 \item{Cashier UI :} Interface with which the cashier interacts.
 \item{Cashier controller :} Allows the interaction between the cashier system and the global system (Station controller).
